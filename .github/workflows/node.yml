@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: move to working directory
-        run: cd ${{ env.working-directory }}
+        run: pwd && cd ${{ env.working-directory }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.2.0
