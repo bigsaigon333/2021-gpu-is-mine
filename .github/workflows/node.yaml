@@ -25,7 +25,7 @@ jobs:
 
   fe-build:
     needs: changes
-    if: ${{ needs.changes.outputs.front-end == 'false' }}
+    if: ${{ needs.changes.outputs.front-end == 'true' }}
     runs-on: ubuntu-latest
     env:
       working-directory: ./front-end
@@ -48,6 +48,13 @@ jobs:
         run: yarn build
         working-directory: ${{ env.working-directory }}
 
+  storybook-build:
+    needs: [changes, fe-build]
+    if: ${{ needs.changes.outputs.front-end == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./front-end
+    steps:
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
