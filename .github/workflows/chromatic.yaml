@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: lts/*
           cache: "yarn"
+          working-directory: ${{ env.working-directory }}
 
       - name: Install dependencies
         run: yarn install
