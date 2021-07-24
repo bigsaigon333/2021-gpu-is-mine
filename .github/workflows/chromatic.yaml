@@ -7,7 +7,25 @@ on:
   workflow_dispatch:
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      back-end: ${{ steps.filter.outputs.back-end }}
+      front-end: ${{ steps.filter.outputs.front-end }}
+    steps:
+      - name: check if front-end directory has changed
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            back-end:
+              - 'back-end/**'
+            front-end:
+              - 'front-end/**'
+
   Storybook-CI-CD:
+    needs: pre-job
+    if: ${{ needs.changes.outputs.front-end == 'true' }}
     runs-on: ubuntu-latest
     env:
       working-directory: ./front-end
@@ -16,9 +34,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: check if front-end directory has changed
-        run: git diff-index origin/develop | grep front-end1|| echo 0
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.2.0
