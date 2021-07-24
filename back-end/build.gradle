@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'checkstyle'
+
 }
 
 group = 'com.example'
@@ -29,6 +30,7 @@ dependencies {
     compile 'io.springfox:springfox-swagger-ui:2.9.2'
 
     runtimeOnly 'com.h2database:h2'
+
 }
 
 test {
@@ -40,3 +42,4 @@ checkstyle {
     configFile = file("${rootDir}/config/gpu-im-checkstyle.xml")
     toolVersion = "8.39"
 }
+
