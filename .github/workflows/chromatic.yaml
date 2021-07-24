@@ -18,14 +18,12 @@ jobs:
           fetch-depth: 0
 
       - name: check if front-end directory has changed
-        run: git diff-index origin/develop | grep front-end || echo 0
+        run: git diff-index origin/develop | grep front-end1|| echo 0
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.2.0
         with:
           node-version: lts/*
-          cache: "yarn"
-          working-directory: ${{ env.working-directory }}
 
       - name: Install dependencies
         run: yarn install
