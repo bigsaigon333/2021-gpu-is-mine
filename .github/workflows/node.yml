@@ -16,15 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: move to working directory
-        run: pwd && cd ${{ env.working-directory }}
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.2.0
         with:
           node-version: lts/*
-          cache: "yarn"
-          working-directory: ${{ env.working-directory }}
 
       - name: install packages
         run: yarn install
