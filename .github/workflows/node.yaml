@@ -55,11 +55,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.2.0
-        with:
-          node-version: lts/*
-
       - name: Install dependencies
         run: yarn install
         working-directory: ${{ env.working-directory }}
