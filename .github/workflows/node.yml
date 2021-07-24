@@ -18,7 +18,6 @@ jobs:
 
       - name: move to working directory
         run: cd ${{ env.working-directory }}
-        working-directory: ./front-end
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.2.0
