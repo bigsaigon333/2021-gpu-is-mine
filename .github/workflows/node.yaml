@@ -25,7 +25,7 @@ jobs:
 
   fe-build:
     needs: changes
-    if: ${{ needs.changes.outputs.front-end == 'true' }}
+    if: ${{ needs.changes.outputs.front-end == 'false' }}
     runs-on: ubuntu-latest
     env:
       working-directory: ./front-end
