@@ -24,7 +24,7 @@ jobs:
               - 'front-end/**'
 
   Storybook-CI-CD:
-    needs: pre-job
+    needs: changes
     if: ${{ needs.changes.outputs.front-end == 'true' }}
     runs-on: ubuntu-latest
     env:
