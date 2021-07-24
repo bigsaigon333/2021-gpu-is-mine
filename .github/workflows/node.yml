@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  fe-build:
     runs-on: ubuntu-latest
     env:
       working-directory: ./front-end
@@ -20,12 +20,8 @@ jobs:
         uses: actions/setup-node@v2.2.0
         with:
           node-version: lts/*
-
-      - name: yarn actions (yaml)
-        uses: sergioramos/yarn-actions@v6
-
-      - name: log
-        run: ls1 -al &&  pwd && which yarn &&  node --version
+          cache: "yarn"
+          working-directory: ${{ env.working-directory }}
 
       - name: install packages
         run: yarn install
